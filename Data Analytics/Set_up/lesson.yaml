@@ -1,0 +1,17 @@
+- Class: meta
+  Course: Data Analytics
+  Lesson: Set Up
+  Author: Eric Miedema
+  Type: Standard
+  Organization: William Jessup
+  Version: 1.0.0
+
+- Class: text
+  Output: In this lesson, we will connet to google sheets to be able to submit completion of other lessons.
+
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL
