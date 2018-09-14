@@ -20,7 +20,7 @@ install.packages("swirl")
 
 ```
 library(swirl)
-install_course_github('Data Analytics')
+install_course_github('ericmiedema','Data Analytics')
 swirl()
 ```
 
