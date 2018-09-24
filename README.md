@@ -16,11 +16,20 @@ For more information regarding swirl, visit [swirlstats.com](http://swirlstats.c
 install.packages("swirl")
 ```
 
-2) Enter the following from the R console, **substituting the name of the course** that you wish to install:
+2) Enter the following from the R console:
 
 ```
 library(swirl)
-install_course_github('ericmiedema','Data Analytics')
+install_course_github('ericmiedema','Data_Analytics')
+swirl()
+```
+
+3)  If error with automatic download.  Download zip GitHub directly and load from zip.
+
+```
+library(swirl)
+install_course_zip("path/to/file/here/Data_Analytics-master.zip", multi=TRUE, 
+                   which_course="Data Analytics")
 swirl()
 ```
 

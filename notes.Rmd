@@ -1,0 +1,41 @@
+---
+title: "Practice Problems"
+author: "Eric Miedema"
+date: "9/20/2018"
+output: html_document
+---
+
+
+Centralize process: 
+  Operations/transformation:  Scott/Eric
+  Clinical Close -> MOF -> LEM
+  
+  Projects/solutions:  
+  Request/Idea -> Proposal -> Develop -> Demo
+
+  Consulting/Self Service:  Noah
+  Strategy -> signups -> Class/Webinar -> Feedback
+  
+Decentralize structure:
+  Leader with 2/3 analyst
+  Supervisor 3/5
+  Manager with 7/10
+  
+  
+Applying analytics:
+
+
+Reporting
+https://www.nytimes.com/section/upshot 
+Simulation
+https://r-simmer.org/articles/simmer-05-simpy.html
+https://gallery.shinyapps.io/EDsimulation/ 
+
+
+People/structure, Process, Technology?
+
+Sensitivity/Specifity
+Queue theory
+traffic problems
+soccer schedules
+optimization loops?
