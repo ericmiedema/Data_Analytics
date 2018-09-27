@@ -1,4 +1,4 @@
-# Data Analytics with R courses
+# Data Analytics with R
 
 This is a collection of interactive courses for data analytics to practice R.
 
