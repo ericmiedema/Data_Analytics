@@ -1,4 +1,3 @@
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 Data Analytics with R
 =====================
 
@@ -101,7 +100,22 @@ there is a blood clot and can be used to assess the likelihood of a VTE.
 1.  What is the probability of a VTE with a positive d-dimer?
 2.  What is the probability of a VTE with a negative d-dimer?
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFJhbmRvbSBQYXRpZW50IEdlbmVyYXRvclxudnRlX3BhdGllbnRzPC01MDAgKyBybm9ybSgxLCBtZWFuID0gNTAsIHNkID0gMTApXG5ub25fdnRlX3BhdGllbnQ8LXZ0ZV9wYXRpZW50cyoxMCArIHJub3JtKDEsIG1lYW4gPSAxMDAsIHNkID0gMjApXG5nZW5kZXJzPC1jKFwiTVwiLFwiRlwiKVxuXG5kZl92dGU8LWRhdGEuZnJhbWUoXG4gIEdlbmRlciA9IHNhbXBsZShnZW5kZXJzLHZ0ZV9wYXRpZW50cyxyZXBsYWNlID0gVFJVRSksXG4gIEFnZSA9IHJvdW5kKHJ1bmlmKHZ0ZV9wYXRpZW50cywwLDE1KStybm9ybSh2dGVfcGF0aWVudHMsIG1lYW4gPSA1MCwgc2QgPSAxMCksMCksXG4gIERfRGltZXIgPSByYmlub20odnRlX3BhdGllbnRzLCAxLCAuOCksXG4gIFZURSA9IDEpXG5cbiMjIHByb2JhYmlsaXR5IG9mIFZURSB3aXRoIGEgcG9zaXRpdmUgZC1kaW1lclxuXG4jIyBwcm9iYWJpbGl0eSBvZiBWVEUgd2l0aCBhIHBvc2l0aXZlIGQtZGltZXIiLCJzb2x1dGlvbiI6IlBfVlRFX1BPU19EX0RpbWVyIDwtIHJvdW5kKG1lYW4oZGYkVlRFW2RmJERfRGltZXI9PTFdKSwyKVxuUF9WVEVfTkVHX0RfRGltZXIgPC0gcm91bmQobWVhbihkZiRWVEVbZGYkRF9EaW1lcj09MF0pLDIpIn0=
+<!-- -->
+
+    # Random Patient Generator
+    vte_patients<-500 + rnorm(1, mean = 50, sd = 10)
+    non_vte_patient<-vte_patients*10 + rnorm(1, mean = 100, sd = 20)
+    genders<-c("M","F")
+
+    df_vte<-data.frame(
+      Gender = sample(genders,vte_patients,replace = TRUE),
+      Age = round(runif(vte_patients,0,15)+rnorm(vte_patients, mean = 50, sd = 10),0),
+      D_Dimer = rbinom(vte_patients, 1, .8),
+      VTE = 1)
+
+    ## probability of VTE with a positive d-dimer
+
+    ## probability of VTE with a positive d-dimer
 
 ### Problem 2
 
@@ -110,7 +124,16 @@ capital. Using [ranked
 pairs](https://en.wikipedia.org/wiki/Ranked_pairs) method determine
 where the capital should be.
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJvcHRpb25zKHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRSlcbnBvcHVsYXRpb248LWRhdGEuZnJhbWUoQ2l0eSA9IGMoXCJNZW1waGlzXCIsXCJOYXNodmlsbGVcIixcIkNoYXR0YW5vb2dhXCIsXCJLbm94dmlsbGVcIiksIFBlcmNlbnQgPSBjKC40MiwuMjYsLjE1LC4xNykpXG5NZW1waGlzPC1kYXRhLmZyYW1lKENpdHkgPSBjKFwiTWVtcGhpc1wiLFwiTmFzaHZpbGxlXCIsXCJDaGF0dGFub29nYVwiLFwiS25veHZpbGxlXCIpLFJhbmsgPSAxOjQpXG5OYXNodmlsbGU8LWRhdGEuZnJhbWUoQ2l0eSA9IGMoXCJOYXNodmlsbGVcIixcIkNoYXR0YW5vb2dhXCIsXCJLbm94dmlsbGVcIixcIk1lbXBoaXNcIiksUmFuayA9IDE6NClcbkNoYXR0YW5vb2dhPC1kYXRhLmZyYW1lKENpdHkgPSBjKFwiQ2hhdHRhbm9vZ2FcIixcIktub3h2aWxsZVwiLFwiTmFzaHZpbGxlXCIsXCJNZW1waGlzXCIpLFJhbmsgPSAxOjQpXG5Lbm94dmlsbGU8LWRhdGEuZnJhbWUoQ2l0eSA9IGMoXCJLbm94dmlsbGVcIixcIkNoYXR0YW5vb2dhXCIsXCJOYXNodmlsbGVcIixcIk1lbXBoaXNcIiksUmFuayA9IDE6NClcblxuIyBDb21wYXJlIE1lbXBoaXMgYW5kIE5hc2h2aWxsZVxuIyBDb21wYXJlIG90aGVyIGFsbCBjaXRpZXNcbiMgRGV0ZXJtaW5lIHdpbm5lciIsInNvbHV0aW9uIjoiIyMgU29sdWlvbiBpbiBkZXZlbG9wbWVudCJ9
+    options(stringsAsFactors = FALSE)
+    population<-data.frame(City = c("Memphis","Nashville","Chattanooga","Knoxville"), Percent = c(.42,.26,.15,.17))
+    Memphis<-data.frame(City = c("Memphis","Nashville","Chattanooga","Knoxville"),Rank = 1:4)
+    Nashville<-data.frame(City = c("Nashville","Chattanooga","Knoxville","Memphis"),Rank = 1:4)
+    Chattanooga<-data.frame(City = c("Chattanooga","Knoxville","Nashville","Memphis"),Rank = 1:4)
+    Knoxville<-data.frame(City = c("Knoxville","Chattanooga","Nashville","Memphis"),Rank = 1:4)
+
+    # Compare Memphis and Nashville
+    # Compare other all cities
+    # Determine winner
 
 ### Base Functions
 
@@ -153,11 +176,22 @@ Practice Examples
 Base on a random generated data for adult patients, what is the standard
 deviation
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCgyMDApXG5hZ2VzPC1yb3VuZChybm9ybSgyMDAsbWVhbiA9IDU1LCBzZCA9IDE1KSwwKSAjbGlzdFxuZGY8LWRhdGEuZnJhbWUoQWdlID0gYWdlcykgI2RhdGEgZnJhbWVcbiMgQ2FsY3VsYXRlIHRoZSBtZWFuIC0gdXNpbmcgc3VtL2xlbmd0aCwgbWVhbiBvciBzdW1tYXJ5IGZ1bmN0aW9uc1xuXG4jIENhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uc1xuXG4jIENhbGN1YWx0ZSB0aGUgeiBzY29yZSBhbmQgcGVyY2VudGFnZSBmb3IgNjUgeWVhciBvbGRzIiwic29sdXRpb24iOiJzZXQuc2VlZCgyMDApXG5hZ2VzPC1yb3VuZChybm9ybSgyMDAsbWVhbiA9IDU1LCBzZCA9IDE1KSwwKSAjbGlzdFxuZGY8LWRhdGEuZnJhbWUoQWdlID0gYWdlcykgI2RhdGEgZnJhbWVcblxuIyBDYWxjdWxhdGUgYW5kIHByaW50IHRoZSBtZWFuXG5tZWFuKGFnZXMpXG5cbiMgQ2FsY3VsYXRlIGFuZCBwcmludCB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uXG5kZiRTcXVhcmVfRGV2aWF0aW9uczwtKGRmJEFnZSAtIG1lYW4oZGYkQWdlKSleMlxudmFyaWFuY2U8LXN1bShkZiRTcXVhcmVfRGV2aWF0aW9ucykvKGxlbmd0aChkZiRBZ2UpLTEpXG5zcXJ0KHZhcmlhbmNlKVxuIyMgT1JcbnNkKGFnZXMpXG5cbiMgQ2FsY3VsYXRlIGFuZCBwcmludCB0aGUgeiBzY29yZSAmIHBlcmNlbnRpbGUgZm9yIGEgNjUgeWVhciBvbGRcbno8LSg2NS1tZWFuKGFnZXMpKS9zZChhZ2VzKVxuelxuZG5vcm0oeilcbiMjIE9SXG5kbm9ybSg2NSxtZWFuID0gbWVhbihhZ2VzKSwgc2QgPSBzZChhZ2VzKSkifQ==
+    set.seed(200)
+    ages<-round(rnorm(200,mean = 55, sd = 15),0) #list
+    df<-data.frame(Age = ages) #data frame
+    # Calculate the mean - using sum/length, mean or summary functions
+
+    # Calculate the standard deviations
+
+    # Calcualte the z score and percentage for 65 year olds
 
 Practice \#2 - Benchmarking
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJpbnN0YWxsLnBhY2thZ2VzKFwiUlNvY3JhdGFcIilcbmxpYnJhcnkoUlNvY3JhdGEpXG5jb21wPC1yZWFkLnNvY3JhdGEoXCJodHRwczovL2RhdGEubWVkaWNhcmUuZ292L3Jlc291cmNlL3VrZmotdHQ2di5jc3ZcIilcblxuIyBXaGF0IGlzIHRoZSB0b3AgZGVjaWxlIGZvciB0aGUgcmF0ZSBvZiBjb21wbGljYXRpb25zIGZvciBoaXAva25lZSByZXBsYWNlbWVudCBwYXRpZW50cz8iLCJzb2x1dGlvbiI6Imluc3RhbGwucGFja2FnZXMoXCJSU29jcmF0YVwiKVxubGlicmFyeShSU29jcmF0YSlcbmNvbXA8LXJlYWQuc29jcmF0YShcImh0dHBzOi8vZGF0YS5tZWRpY2FyZS5nb3YvcmVzb3VyY2UvdWtmai10dDZ2LmNzdlwiKVxuXG4jIyBEYXRhIE1hbmlwdWxhdGlvblxuY29tcDwtY29tcFtjb21wJG1lYXN1cmVfaWQgPT0gXCJDT01QX0hJUF9LTkVFXCIsYygnaG9zcGl0YWxfbmFtZScsJ3Byb3ZpZGVyX2lkJywnbWVhc3VyZV9pZCcsJ21lYXN1cmVfbmFtZScsJ3Njb3JlJywnZGVub21pbmF0b3InKV1cbmNvbXAkc2NvcmU8LWFzLm51bWVyaWMoY29tcCRzY29yZSkvMTAwXG5jb21wJGRlbm9taW5hdG9yPC1hcy5pbnRlZ2VyKGNvbXAkZGVub21pbmF0b3IpXG5jb21wPC1jb21wW2lzLm5hKGNvbXAkZGVub21pbmF0b3IpPT1GQUxTRSxdXG5jb21wJG51bWVyYXRvcjwtY29tcCRkZW5vbWluYXRvcipjb21wJHNjb3JlXG5jb21wJHJhbms8LXJhbmsoY29tcCRzY29yZSwgdGllcy5tZXRob2QgPSAnYXZlcmFnZScpXG5jb21wJHBlcmNlbnRpbGU8LXJvdW5kKGNvbXAkcmFuay9sZW5ndGgoY29tcCRwcm92aWRlcl9pZCksMylcbmNvbXAkdG9wX2RlY2lsZTwtJ05vJ1xuY29tcCR0b3BfZGVjaWxlW2NvbXAkcGVyY2VudGlsZTw9LjFdPC0nWWVzJ1xuY29tcCR0b3BfZGVjaWxlW2NvbXAkcGVyY2VudGlsZSE9bWF4KGNvbXAkcGVyY2VudGlsZVtjb21wJHRvcF9kZWNpbGU9PSdZZXMnXSldPC0nTm8nXG50b3BfZGVjaWxlX3Njb3JlPC11bmlxdWUoY29tcCRzY29yZVtjb21wJHRvcF9kZWNpbGU9PSdZZXMnXSkifQ==
+    install.packages("RSocrata")
+    library(RSocrata)
+    comp<-read.socrata("https://data.medicare.gov/resource/ukfj-tt6v.csv")
+
+    # What is the top decile for the rate of complications for hip/knee replacement patients?
 
 ### Probability
 
@@ -168,7 +202,16 @@ large amounts of random data to indicate the probability of Yahtzee on
 the first roll. Bonus problem is if it is your last turn and you have 3
 rolls to get Yatzee.
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFdoYXQgaXMgdGhlIHByb2JhYmlsaXR5IG9mIGdldHRpbmcgWWF0emVlPyIsInNvbHV0aW9uIjoiIyMgU29sdXRpb24gMSB3aXRoIGRhdGEgZnJhbWUgYW5kIFxubGlicmFyeSh0aWR5cilcbmxpYnJhcnkoZHBseXIpXG5cbnNldC5zZWVkKDMxKVxuXG5yb2xsczwtNTAwMDAgI051bWJlciBvZiByb2xsc1xuZGY8LWRhdGEuZnJhbWUoRDEgPSBzYW1wbGUoMTo2LHJvbGxzLHJlcGxhY2UgPSBUUlVFKSwgRDIgPSBzYW1wbGUoMTo2LHJvbGxzLHJlcGxhY2UgPSBUUlVFKSxEMz0gc2FtcGxlKDE6Nixyb2xscyxyZXBsYWNlID0gVFJVRSksXG4gICAgICAgICAgICAgICBENCA9IHNhbXBsZSgxOjYscm9sbHMscmVwbGFjZSA9IFRSVUUpLCBENSA9IHNhbXBsZSgxOjYscm9sbHMscmVwbGFjZSA9IFRSVUUpKSAgI1JhbmRvbSBkYXRhIHNldFxuZGYkUm9sbDwtMTpyb2xscyAjdW5pcXVlIGluZGljYXRvciBmb3Igcm9sbHMgXG5cbmRmYjwtZGYgJT4lIGdhdGhlcihcIlJvbGxcIixcIlZhbHVlXCIpICN0cmFuc2Zvcm0gZGF0YSBmcm9tIFwid2lkZVwiIHRvIFwibG9uZ1wiIHRvIGJlIGFibGVcbmNvbG5hbWVzKGRmYik8LWMoXCJSb2xsXCIsXCJEaWVcIixcIlZhbHVlXCIpXG5kZmI8LWRmYiAlPiUgZ3JvdXBfYnkoUm9sbCwgdmFsdWUpICU+JSAjIEdyb3VwIGJ5IHJvbGwgYW5kIHZhbHVlIHRvIGZpbmQgZHVwbGljYXRlc1xuICBzdW1tYXJpemUoRGllX0NvdW50ID0gbGVuZ3RoKHZhbHVlKSkgIyBDb3VudCBudW1iZXIgb2YgZGljZSB0aGF0IGFyZSB0aGUgc2FtZSBwZXIgcm9sbFxuZmlyc3Rfcm9sbF95YWh0emVlPC1sZW5ndGgoZGYkUm9sbFtkZiREaWVfQ291bnQ9PTVdKS9yb2xscyAjY2FsY3VsYXRlIFlhdHplZSBvdmVyIHRvdGFsIHJvbGxzXG5maXJzdF9yb2xsX3lhaHR6ZWVcblxuIyMgU29sdXRpb24gMiB3aXRoIGZvciBsb29wIHdpdGggaWYvZWxzZVxucm9sbHM8LTUwMDAwICNOdW1iZXIgb2Ygcm9sbHNcbnlhaHR6ZWU8LTAgIyBTZXQgeWFodHplZSBpbmRpY2F0b3IgdG8gMFxuXG5mb3IoaSBpbiAxOnJvbGxzKXtcbiAgaWYodmFyKHNhbXBsZSgxOjYsNSxyZXBsYWNlID0gVFJVRSkpPT0wKSB7XG4gICAgeWFodHplZSA8LSB5YWh0emVlICsgMVxuICB9XG59XG5cbnlhaHR6ZWUvcm9sbHMifQ==
+    # What is the probability of getting Yatzee?
+    library(tidyr)
+    library(dplyr)
+
+    set.seed(31)
+
+    rolls<-50000 #Number of rolls
+    df<-data.frame(D1 = sample(1:6,rolls,replace = TRUE), D2 = sample(1:6,rolls,replace = TRUE),D3= sample(1:6,rolls,replace = TRUE),
+                   D4 = sample(1:6,rolls,replace = TRUE), D5 = sample(1:6,rolls,replace = TRUE))
+    df$Roll<-1:rolls 
 
 Practice \#2 - Probability of Distributions
 
@@ -182,12 +225,16 @@ frustration.
 
 Practice \#1: Transform this list of dates to a standard format.
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkYXRlc19hcmVfdGhlX3dvcnN0PC1jKFwiMi0wMS0yMDE4XCIsXCIwMy0wMy0yMDE4XCIsXCIxLzEvMjAxOFwiLFwiMjAxOC0wNC0wMiAwMDowMDowMFwiKVxuZGY8LWRhdGEuZnJhbWUoRGF0ZSA9IGRhdGVzX2FyZV90aGVfd29yc3QpICNkYXRhIGZyYW1lXG4jIFRyYW5zZm9ybSB0byBkYXRlIGZvcm1hdCIsInNvbHV0aW9uIjoiZGF0ZXNfYXJlX3RoZV93b3JzdDwtYyhcIjItMDEtMjAxOFwiLFwiNS8xLzIwMTggMToyMyBQTVwiLFwiMDMtMDMtMjAxOFwiLFwiMS8xLzIwMThcIixcIjIwMTgtMDQtMDIgMDA6MDA6MDBcIilcbmRmPC1kYXRhLmZyYW1lKERhdGUgPSBkYXRlc19hcmVfdGhlX3dvcnN0KSAjZGF0YSBmcmFtZVxuIyBUcmFuc2Zvcm0gdG8gZGF0ZSBmb3JtYXRcbmRmJERhdGU8LWdzdWIoXCIgLipcIixcIlwiLGRmJERhdGUpICMgLiogc3BlY2lhbCBjaGFyYWN0ZXIgZm9yIGV2ZXJ5dGhpbmdcbmRmJERhdGVfZm9ybWF0PC1hcy5EYXRlKGRmJERhdGUsIGZvcm1hdCA9IFwiJW0tJWQtJVlcIilcbmRmW2lzLm5hKGRmJERhdGVfZm9ybWF0KT09VFJVRSxdICMgZmlsdGVyIE5BIGRhdGVzIFxuZGYkRGF0ZV9mb3JtYXRbaXMubmEoZGYkRGF0ZV9mb3JtYXQpPT1UUlVFXTwtYXMuRGF0ZShkZiREYXRlW2lzLm5hKGRmJERhdGVfZm9ybWF0KT09VFJVRV0sIGZvcm1hdCA9IFwiJW0vJWQvJVlcIikgI3JlcGxhY2UgTkEgZGF0ZXNcbmRmJERhdGVfZm9ybWF0W2lzLm5hKGRmJERhdGVfZm9ybWF0KT09VFJVRV08LWFzLkRhdGUoZGYkRGF0ZVtpcy5uYShkZiREYXRlX2Zvcm1hdCk9PVRSVUVdLCBmb3JtYXQgPSBcIiVZLSVtLSVkXCIpXG5kZiJ9
+    dates_are_the_worst<-c("2-01-2018","03-03-2018","1/1/2018","2018-04-02 00:00:00")
+    df<-data.frame(Date = dates_are_the_worst) #data frame
+    # Transform to date format
 
 Practice \#2: Take lessons learned from practice \#1 to write a user
 defined function to another list of dates.
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkYXRlc19hcmVfdGhlX3dvcnN0PC1jKFwiMi0wMS0yMDE4XCIsXCI1LzEvMjAxOCAxOjIzIFBNXCIsXCIwMy0wMy0yMDE4XCIsXCIxLzEvMjAxOFwiLFwiMjAxOC0wNC0wMiAwMDowMDowMFwiKVxuYW5vdGhlcl9kYXRlX2xpc3Q8LWMoXCIzLzIvMjAxOCAyMzoyMlwiLFwiNi8xLzIwMTggMToyMyBQTVwiLFwiNS00LTIwMThcIixcIjEvMS8yMDE4XCIsXCIyMDE4LTAzLTAxIDAwOjAwOjAwXCIpXG4jIFRyYW5zZm9ybSB0byBkYXRlIGxpc3RzIGZvcm1hdCB3aXRoIHVzZXIgZGVmaW5lZCBmdW5jdGlvbiIsInNvbHV0aW9uIjoiZGF0ZXNfYXJlX3RoZV93b3JzdDwtYyhcIjItMDEtMjAxOFwiLFwiNS8xLzIwMTggMToyMyBQTVwiLFwiMDMtMDMtMjAxOFwiLFwiMS8xLzIwMThcIixcIjIwMTgtMDQtMDIgMDA6MDA6MDBcIilcbmFub3RoZXJfZGF0ZV9saXN0PC1jKFwiMy8yLzIwMTggMjM6MjJcIixcIjYvMS8yMDE4IDE6MjMgUE1cIixcIjUtNC0yMDE4XCIsXCIxLzEvMjAxOFwiLFwiMjAxOC0wMy0wMSAwMDowMDowMFwiKVxuXG4jIFRyYW5zZm9ybSB0byBkYXRlIGZvcm1hdCB3aXRoIHVzZXIgZGVmaW5lZCBmdW5jdGlvblxuZGF0ZV9mdW5jdGlvbl9pc190aGVfYmVzdDwtZnVuY3Rpb24oeCl7XG4gIGRmPC1kYXRhLmZyYW1lKERhdGUgPSBnc3ViKFwiIC4qXCIsXCJcIix4KSkgIyAuKiBzcGVjaWFsIGNoYXJhY3RlciBmb3IgZXZlcnl0aGluZ1xuICBkZiREYXRlX2Zvcm1hdDwtYXMuRGF0ZShkZiREYXRlLCBmb3JtYXQgPSBcIiVtLSVkLSVZXCIpXG4gIGRmJERhdGVfZm9ybWF0W2lzLm5hKGRmJERhdGVfZm9ybWF0KT09VFJVRV08LWFzLkRhdGUoZGYkRGF0ZVtpcy5uYShkZiREYXRlX2Zvcm1hdCk9PVRSVUVdLCBmb3JtYXQgPSBcIiVtLyVkLyVZXCIpICNyZXBsYWNlIE5BIGRhdGVzXG4gIGRmJERhdGVfZm9ybWF0W2lzLm5hKGRmJERhdGVfZm9ybWF0KT09VFJVRV08LWFzLkRhdGUoZGYkRGF0ZVtpcy5uYShkZiREYXRlX2Zvcm1hdCk9PVRSVUVdLCBmb3JtYXQgPSBcIiVZLSVtLSVkXCIpXG4gIGRmJERhdGVfZm9ybWF0XG59XG4gIFxuZGF0ZV9mdW5jdGlvbl9pc190aGVfYmVzdChkYXRlc19hcmVfdGhlX3dvcnN0KVxuZGF0ZV9mdW5jdGlvbl9pc190aGVfYmVzdChhbm90aGVyX2RhdGVfbGlzdCkifQ==
+    dates_are_the_worst<-c("2-01-2018","5/1/2018 1:23 PM","03-03-2018","1/1/2018","2018-04-02 00:00:00")
+    another_date_list<-c("3/2/2018 23:22","6/1/2018 1:23 PM","5-4-2018","1/1/2018","2018-03-01 00:00:00")
+    # Transform to date lists format with user defined function
 
 ### Working with Strings
 
@@ -198,18 +245,21 @@ needs to be extracted from the larger text.
 
 Practice \#1: Extracting data from string
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtZXNzeV9zdHJpbmc8LWMoXCJIZXJlIGlzIHNvbWUgdGV4dCB0aGF0IHdlIHdhbnQgdG8gZm9ybWF0OiBOYW1lID0gRXJpYyBNaWVkZW1hLCBCaXJ0aGRheSA9IDEyLzEyLzE5ODcsIEFnZSA9IDMwLCBOYW1lID0gTm9haCBCb2dnZXNzLCAgQmlydGhkYXkgPSBOQSwgQWdlID0gMzUuIEVORCBvZiBkb2N1bWVudFwiKVxuXG4jIENyZWF0ZSBhIGRhdGEgZnJhbWUgd2l0aCBOYW1lLCBCaXJ0aGRheSwgQWdlIGNvbHVtbnMiLCJzb2x1dGlvbiI6Im1lc3N5X3N0cmluZzwtYyhcIkhlcmUgaXMgc29tZSB0ZXh0IHRoYXQgd2Ugd2FudCB0byBmb3JtYXQ6IE5hbWUgPSBFcmljIE1pZWRlbWEsIEJpcnRoZGF5ID0gMTIvMTIvMTk4NywgQWdlID0gMzAsIE5hbWUgPSBOb2FoIEJvZ2dlc3MsIEJpcnRoZGF5ID0gTkEsIEFnZSA9IDM1LiBFTkQgb2YgZG9jdW1lbnRcIilcblxuIyBDcmVhdGUgYSBkYXRhIGZyYW1lIHdpdGggTmFtZSwgQmlydGhkYXksIEFnZSBjb2x1bW5zXG5cbnRleHRfZGF0YTwtZ3N1YihcIi4qOiBcIixcIlwiLG1lc3N5X3N0cmluZykgIyAuKiBcIkV2ZXJ5dGhpbmcgV2lkZWNhcmRcIiBcbnRleHRfZGF0YTwtZ3N1YihcIlxcXFwuIEVORC4qXCIsXCJcIix0ZXh0X2RhdGEpICMgXFxcXCBjb252ZXJ0cyBzcGVjaWFsIGNoYXJhY3RlciB0byBub3JtYWxcblxuZGY8LSBzdHJzcGxpdCh0ZXh0X2RhdGEsIHNwbGl0ID0gXCIsXCIpICNzcGxpdCBkYXRhIGVsZW1lbnRzXG5kZjwtIGRhdGEuZnJhbWUoWCA9IHVubGlzdChkZikpICMgY3JlYXRlIGRhdGEgZnJhbWUgb3IgdXNlIGFwcGx5L2xvb3BcbmRmJFg8LWdzdWIoXCJeIFwiLFwiXCIsZGYkWCkgIyBeIFwiU3RhcnQgb2Ygc3RyaW5nXCJcbmRmJFg8LWdzdWIoXCIgJFwiLFwiXCIsZGYkWCkgIyAkIFwiRW5kIG9mIHN0cmluZ1wiXG5kZiRWYWx1ZTwtZ3N1YihcIi4qPSBcIixcIlwiLGRmJFgpXG5kZiRDb2x1bW48LWdzdWIoXCIgPS4qXCIsXCJcIixkZiRYKVxuZGYkSUQ8LTE6bGVuZ3RoKGRmJFgpICMgU2VxdWVuY2Ugb2Ygcm93c1xuZGYkSUQ8LWNlaWxpbmcoZGYkSUQvMykgIyBQZXJzb24gSURcblxubGlicmFyeSh0aWR5cilcbmxpYnJhcnkoZHBseXIpXG5kZmI8LSBkZiAlPiUgc2VsZWN0KC1YKSAlPiUgc3ByZWFkKENvbHVtbiwgVmFsdWUpIn0=
+    messy_string<-c("Here is some text that we want to format: Name = Eric Miedema, Birthday = 12/12/1987, Age = 30, Name = Noah Boggess,  Birthday = NA, Age = 35. END of document")
+
+    # Create a data frame with Name, Birthday, Age columns
 
 Additional, R file, string or base functions can help organize data or
 text from multiple files.
 
 Practice \#2: Collapse data multiple files into a single string
 
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzZXQuc2VlZCgxNSlcbmRpci5jcmVhdGUoXCJGYWtlX0RhdGFcIikgI2NyZWF0ZSBmb2xkZXJcbiMgQWRkIHJhbmRvbSBkYXRhXG5mb3IoaSBpbiBzZXFfYWxvbmcobGV0dGVycykpe1xuICB3cml0ZS5jc3YoZGF0YS5mcmFtZShEYXRhID0gZmxvb3Iocm5vcm0oMTUsIG1lYW4gPSAxMDAsIHNkID01KSkpLFxuICAgICAgICAgICAgcGFzdGUoXCJGYWtlX0RhdGEvXCIsbGV0dGVyc1tpXSwnLmNzdicsc2VwID0gXCJcIikscm93Lm5hbWVzID0gRkFMU0UpXG59XG5cbiMgQ29sbGFwc2UgZGF0YSBtdWx0aXBsZSBmaWxlcyBpbnRvIGEgc2luZ2xlIHN0cmluZyIsInNvbHV0aW9uIjoic2V0LnNlZWQoMTUpXG5kaXIuY3JlYXRlKFwiRmFrZV9EYXRhXCIpICNjcmVhdGUgZm9sZGVyXG4jIEFkZCByYW5kb20gZGF0YVxuZm9yKGkgaW4gc2VxX2Fsb25nKGxldHRlcnMpKXtcbiAgd3JpdGUuY3N2KGRhdGEuZnJhbWUoRGF0YSA9IGZsb29yKHJub3JtKDE1LCBtZWFuID0gMTAwLCBzZCA9NSkpKSxcbiAgICAgICAgICAgIHBhc3RlKFwiRmFrZV9EYXRhL1wiLGxldHRlcnNbaV0sJy5jc3YnLHNlcCA9IFwiXCIpLHJvdy5uYW1lcyA9IEZBTFNFKVxufVxuXG4jIENyZWF0ZSBhIGRhdGEgZnJhbWUgd2l0aCBOYW1lLCBCaXJ0aGRheSwgQWdlIGNvbHVtbnNcbmZpbGVfbmFtZXM8LWxpc3QuZmlsZXMoXCJGYWtlX0RhdGEvXCIscGF0dGVybiA9IFwiXFxcXC5jc3ZcIilcblxuIyBTb2x1dGlvbiAxIHVzaW5nIHJiaW5kIGZvciBkYXRhIGZyYW1lXG5kZjwtZG8uY2FsbChcInJiaW5kXCIsbGFwcGx5KHBhc3RlMChcIkZha2VfRGF0YS9cIixmaWxlX25hbWVzKSxyZWFkLmNzdixoZWFkZXIgPSBUUlVFKSlcbnBhc3RlKGRmJERhdGEsIGNvbGxhcHNlID0gXCIgXCIpXG5cbiMgU29sdXRpb24gMiB1bnNpbmcgdW5saXN0XG5kYXRhMTwtdW5saXN0KGxhcHBseShwYXN0ZShcIkZha2VfRGF0YS9cIixmaWxlX25hbWVzLHNlcCA9IFwiXCIpLHJlYWQuY3N2LGhlYWRlciA9IFRSVUUpKVxucGFzdGUoZGF0YTEsIGNvbGxhcHNlID0gXCIgXCIpIn0=
+    set.seed(15)
+    dir.create("Fake_Data") #create folder
+    # Add random data
+    for(i in seq_along(letters)){
+      write.csv(data.frame(Data = floor(rnorm(15, mean = 100, sd =5))),
+                paste("Fake_Data/",letters[i],'.csv',sep = ""),row.names = FALSE)
+    }
 
-Learning Notes
---------------
-
-This reference document utilizes datacamp’s `tutorial` package for the
-interative online problems. A similar package for step by step practice
-in R is the `learnr` package.
+    # Collapse data multiple files into a single string
