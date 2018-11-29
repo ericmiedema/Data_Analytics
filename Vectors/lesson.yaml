@@ -42,14 +42,6 @@
   Hint: Use tf <- num_vect < 1 to assign the result of num_vect < 1 to a variable
     called tf.
 
-- Class: mult_question
-  Output: What do you think tf will look like?
-  CorrectAnswer: a vector of 4 logical values
-  AnswerChoices: a vector of 4 logical values; a single logical value
-  AnswerTests: omnitest(correctVal='a vector of 4 logical values')
-  Hint: Remember our lesson on vector arithmetic? The theme was that R performs many
-    operations on an element-by-element basis. We called these 'vectorized' operations.
-
 - Class: cmd_question
   Output: Print the contents of tf now.
   CorrectAnswer: tf

@@ -1,3 +1,6 @@
+library(googlesheets)
+
+
 notify <- function() {
   e <- get("e", parent.frame())
   if(e$val == "No") return(TRUE)
@@ -6,11 +9,11 @@ notify <- function() {
   while(!good) {
     # Get info
     name <- readline_clean("What is your full name? ")
-    address <- readline_clean("What is the email address of the person you'd like to notify? ")
+    address <- readline_clean("What is your email address?")
     
     # Repeat back to them
     message("\nDoes everything look good?\n")
-    message("Your name: ", name, "\n", "Send to: ", address)
+    message("Your name: ", name, "\n", "Email: ", address)
     
     yn <- select.list(c("Yes", "No"), graphics = FALSE)
     if(yn == "Yes") good <- TRUE
@@ -20,24 +23,11 @@ notify <- function() {
   course_name <- attr(e$les, "course_name")
   lesson_name <- attr(e$les, "lesson_name")
   
-  set.seed(as.numeric(Sys.time()))
-  notify_key<-rnorm(1, mean = 0, sd = 1)
-  
-  subject <- paste(name, "just completed", course_name, "-", lesson_name, ' on ', Sys.time())
-  body <- paste('Submission Key',notify_key)
-  
-  # Send email
-  swirl:::email(address, subject, body)
-  
-  hrule()
-  message("I just tried to create a new email with the following info:\n")
-  message("To: ", address)
-  message("Subject: ", subject)
-  message("Body: ", body)
-  
-  message("\nIf it didn't work, you can send the same email manually.")
-  hrule()
-  
+  book<-gs_title("R exercises SP19")
+  gs_add_row(book,
+             ws = 'Sheet1',
+             input = c(course_name, lesson_name, name, 
+                       Sys.time(),address))
   # Return TRUE to satisfy swirl and return to course menu
   TRUE
 }

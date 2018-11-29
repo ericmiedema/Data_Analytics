@@ -1,9 +1,5 @@
-# Returns TRUE if e$expr matches any of the expressions given
-# (as characters) in the argument.
-ANY_of_exprs <- function(...){
-  e <- get("e", parent.frame())
-  any(sapply(c(...), function(expr)omnitest(expr)))
-}
+library(googlesheets)
+
 
 notify <- function() {
   e <- get("e", parent.frame())
@@ -13,11 +9,11 @@ notify <- function() {
   while(!good) {
     # Get info
     name <- readline_clean("What is your full name? ")
-    address <- readline_clean("What is the email address of the person you'd like to notify? ")
+    address <- readline_clean("What is your email address?")
     
     # Repeat back to them
     message("\nDoes everything look good?\n")
-    message("Your name: ", name, "\n", "Send to: ", address)
+    message("Your name: ", name, "\n", "Email: ", address)
     
     yn <- select.list(c("Yes", "No"), graphics = FALSE)
     if(yn == "Yes") good <- TRUE
@@ -27,21 +23,11 @@ notify <- function() {
   course_name <- attr(e$les, "course_name")
   lesson_name <- attr(e$les, "lesson_name")
   
-  subject <- paste(name, "just completed", course_name, "-", lesson_name)
-  body = ""
-  
-  # Send email
-  swirl:::email(address, subject, body)
-  
-  hrule()
-  message("I just tried to create a new email with the following info:\n")
-  message("To: ", address)
-  message("Subject: ", subject)
-  message("Body: <empty>")
-  
-  message("\nIf it didn't work, you can send the same email manually.")
-  hrule()
-  
+  book<-gs_title("R exercises SP19")
+  gs_add_row(book,
+             ws = 'Sheet1',
+             input = c(course_name, lesson_name, name, 
+                       Sys.time(),address))
   # Return TRUE to satisfy swirl and return to course menu
   TRUE
 }
