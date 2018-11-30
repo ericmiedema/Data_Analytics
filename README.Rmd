@@ -22,7 +22,7 @@ For more information regarding swirl, visit [swirlstats.com](http://swirlstats.c
 
 1) Make sure you have a recent version version of swirl:
 
-``` {r}
+```
 install.packages("swirl")
 ```
 
