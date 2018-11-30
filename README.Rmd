@@ -20,13 +20,13 @@ For more information regarding swirl, visit [swirlstats.com](http://swirlstats.c
 
 **This is the preferred method of installing courses.** It automates the process by allowing you to do everything right from the R console.
 
-1) Make sure you have a recent version version of swirl:
+1 - Make sure you have a recent version version of swirl:
 
 ```
 install.packages("swirl")
 ```
 
-2) Enter the following from the R console:
+2 - Enter the following from the R console:
 
 ```
 library(swirl)
@@ -34,7 +34,7 @@ install_course_github('ericmiedema','Data_Analytics')
 swirl()
 ```
 
-3) Test submission by selecting 1: Set up and following instructions.
+3 - Test submission by selecting 1: Set up and following instructions.
 
 ### Uninstall a course or loading issue
 
