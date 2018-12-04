@@ -234,7 +234,7 @@
   Hint: If your programming environment doesn't support auto-completion, just type my_div and hit Enter to move on.
 
 - Class: mult_question
-  Output: Would you like to inform someone about your successful completion of this lesson?
+  Output: Would you like to submit the completion of this course topic?
   CorrectAnswer: NULL
   AnswerChoices: Yes; No
   AnswerTests: notify()

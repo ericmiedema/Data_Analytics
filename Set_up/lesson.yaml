@@ -7,10 +7,19 @@
   Version: 1.0.0
 
 - Class: text
-  Output: In this lesson, we will connet to google sheets to be able to submit completion of other lessons.
+  Output: This lesson is to test a submission to the class google sheet.
+
+- Class: text
+  Output: The first step is to access the class google sheet.  Please log into your Jessup email then 
+  copy and paste this link into the browser.  
+  https://docs.google.com/spreadsheets/d/1Znf8ohl48yrOFwBkgebOS4GzcsR2bvvbI8Mjb-iDwwQ
+  
+- Class: text
+  Output: The last step is to submit the completion of this course.  
+  Make sure to write you full name and Jessup email address when prompted.
 
 - Class: mult_question
-  Output: Would you like to inform someone about your successful completion of this lesson?
+  Output: Would you like to submit the completion of this course topic?
   CorrectAnswer: NULL
   AnswerChoices: Yes; No
   AnswerTests: notify()

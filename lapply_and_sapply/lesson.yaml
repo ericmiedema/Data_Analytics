@@ -232,7 +232,7 @@
   Output: The only difference between previous examples and this one is that we are defining and using our own function right in the call to lapply(). Our function has no name and disappears as soon as lapply() is done using it. So-called 'anonymous functions' can be very useful when one of R's built-in functions isn't an option.
 
 - Class: mult_question
-  Output: Would you like to inform someone about your successful completion of this lesson?
+  Output: Would you like to submit the completion of this course topic?
   CorrectAnswer: NULL
   AnswerChoices: Yes; No
   AnswerTests: notify()

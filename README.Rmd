@@ -23,7 +23,7 @@ For more information regarding swirl, visit [swirlstats.com](http://swirlstats.c
 1 - Make sure you have a recent version version of swirl:
 
 ```
-install.packages("swirl")
+install.packages(c('swirl','googlesheets')
 ```
 
 2 - Enter the following from the R console:
