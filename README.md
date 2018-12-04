@@ -22,7 +22,7 @@ process by allowing you to do everything right from the R console.
 
 1 - Make sure you have a recent version version of swirl:
 
-    install.packages(c('swirl','googlesheets')
+    install.packages(c('swirl','googlesheets'))
 
 2 - Enter the following from the R console:
 
