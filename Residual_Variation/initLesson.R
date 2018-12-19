@@ -5,6 +5,7 @@
   )
 }
 
-galton <- read.csv(file.path(.get_course_path(),
-	"Regression_Models","Introduction", "galton.csv"))
+galton <- read.csv(file.path(.get_course_path(), 
+                             "Data_Analytics", "Regression", "galton.csv"))
+
 n <- 928

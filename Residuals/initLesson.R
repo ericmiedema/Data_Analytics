@@ -5,10 +5,10 @@
   )
 }
 
-galton <- read.csv(file.path(.get_course_path(),
-	"Regression_Models","Introduction", "galton.csv"))
+galton <- read.csv(file.path(.get_course_path(), 
+                             "Data_Analytics", "Regression", "galton.csv"))
 est <- function(slope, intercept)intercept + slope*galton$parent
 sqe <- function(slope, intercept)sum( (est(slope, intercept)-galton$child)^2)
 attenu <- datasets::attenu
 fname <- paste(.get_course_path(),
-	"Regression_Models","Residuals","res_eqn.R",sep="/")
+	"Data_Analytics","Residuals","res_eqn.R",sep="/")
