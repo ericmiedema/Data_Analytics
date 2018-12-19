@@ -6,7 +6,6 @@
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
-
 - Class: text
   Output:  In a previous lesson we showed you the vast capabilities of qplot, the basic workhorse function of the ggplot2 package. In this lesson we'll focus on some fundamental components of the package. These  underlie qplot which uses default values when it calls them. If you understand these building blocks, you will be better able to customize your plots. We'll use the second workhorse function in the package, ggplot, as well as other graphing functions. 
 
@@ -177,13 +176,6 @@
 
 - Class: text
   Output: Uh oh! Nothing happened. Does g exist? Of course, it just isn't visible yet since you didn't add a layer.
-
-- Class: mult_question
-  Output:  If you typed g at the command line, what would happen?
-  AnswerChoices: a scatterplot would appear with 2 colors of points; R would return an error in red; I would have to try this to answer the question
-  CorrectAnswer: R would return an error in red
-  AnswerTests: omnitest(correctVal='R would return an error in red')
-  Hint: You've told ggplot about the data, but have you told it how to display it? 
 
 - Class: cmd_question
   Output: We'll build the plot up step by step. First add to g a call to the function geom_point with 0 arguments.
