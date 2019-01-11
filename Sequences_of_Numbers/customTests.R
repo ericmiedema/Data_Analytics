@@ -1,5 +1,9 @@
 library(googlesheets)
 
+ANY_of_exprs <- function(...){
+  e <- get("e", parent.frame())
+  any(sapply(c(...), function(expr)omnitest(expr)))
+}
 
 notify <- function() {
   e <- get("e", parent.frame())
