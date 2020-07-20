@@ -20,14 +20,15 @@ notify <- function() {
   }
   
   # Get course and lesson names
-  course_name <- attr(e$les, "course_name")
-  lesson_name <- attr(e$les, "lesson_name")
-  
-  book<-gs_title("R exercises SP19")
-  gs_add_row(book,
-             ws = 'Sheet1',
-             input = c(course_name, lesson_name, name, 
-                       Sys.time(),address))
+  ss <- gs4_get('https://docs.google.com/spreadsheets/d/1Znf8ohl48yrOFwBkgebOS4GzcsR2bvvbI8Mjb-iDwwQ')
+  # Get course and lesson names
+  ws = 'Sheet1'
+  input = data.frame('Course' = attr(e$les, "course_name"),
+                     'Lesson' = attr(e$les, "lesson_name"),
+                     'Name' = name,
+                     'Complete.Time' = Sys.time(),
+                     'Email' = address, stringsAsFactors = FALSE)
+  ss %>% sheet_append(input, sheet = 'Sheet1')
   # Return TRUE to satisfy swirl and return to course menu
   TRUE
 }
