@@ -20,9 +20,9 @@ repository](https://github.com/swirldev/swirl).
 **This is the preferred method of installing courses.** It automates the
 process by allowing you to do everything right from the R console.
 
-1 - Make sure you have a recent version version of swirl:
+1 - Make sure you have a recent version version of swirl & googlesheets:
 
-    install.packages(c('swirl','googlesheets'))
+    install.packages(c('swirl','googlesheets4'))
 
 2 - Enter the following from the R console:
 
@@ -38,5 +38,6 @@ If you’d like to remove a course at any time, you can use
 `uninstall_course("Course Name Here")` or `uninstall_all_courses()` to
 start fresh. If there is a issue with a specific topic use the default
 “R Programming: The basics of programming” and send the
-`savehistory(file = "topic_name.txt")` to <emiedema@jessup.edu> to
-indicate completion.
+`savehistory(file = "topic_name.txt")` to
+<a href="mailto:emiedema@jessup.edu" class="email">emiedema@jessup.edu</a>
+to indicate completion.
