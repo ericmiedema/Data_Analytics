@@ -1,4 +1,4 @@
-library(googlesheets)
+library(googlesheets4)
 
 
 notify <- function() {
